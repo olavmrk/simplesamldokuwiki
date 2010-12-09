@@ -32,7 +32,7 @@ Steps to install:
      $conf['simplesamlphp_attr_name'] = 'urn:mace:dir:attribute-def:cn';
      // mail: optional, but necessary when enabling page change notifications
      $conf['simplesamlphp_attr_mail']     = 'urn:mace:dir:attribute-def:mail';
-     // groups: optional, can be used in ACL's to authorize certain parts to certai user groups
+     // groups: optional, can be used in ACL's to authorize certain parts to certain user groups
      $conf['simplesamlphp_attr_grps']     = 'groups';
 
    Other settings that may be of interest:
