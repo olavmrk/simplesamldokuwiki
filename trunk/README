@@ -1,3 +1,65 @@
-Documentation of how to install found here:
-http://rnd.feide.no/content/using-dokuwiki-with-simplesamlphp
+With this component you can integrate simpleSAMLphp with DokuWiki?, enabling
+federated login with an SAML 2.0 or Shibboleth 1.3 IdP. It's a authentication
+plugin for DokuWiki which uses a simpleSAMLphp installation on the same host.
+
+This package assumes you've installed and configured both simpleSAMLphp and
+DokuWiki already. For more information about each of the individual parts,
+see:
+ * http://www.dokuwiki.org/
+ * http://www.simplesamlphp.org/
+
+The module has been tested with DokuWiki 20080505 and simpleSAMLphp 1.6.2.
+
+Steps to install:
+
+0. Ensure that DokuWiki and simpleSAMLphp are installed and working, as
+   per above.
+
+1. Put the file auth/simplesamlphp.class.php into DokuWiki's inc/auth/
+   directory, or symlink it into there.
+
+2. Edit DokuWiki's local.php (or create it), and add at least the following
+   settings:
+
+     // enable the simplesamlphp authentication plugin:
+     $conf['authtype'] = 'simplesamlphp';
+     // point DokuWiki the path where you installed simpleSAMLphp:
+     $conf['simplesamlphp_path'] = '/usr/share/simplesamlphp';
+     // define which attributes to use for DokuWiki:
+     // user: a username displayed in page history and last modified notifications
+     $conf['simplesamlphp_attr_user'] = 'urn:mace:dir:attribute-def:eduPersonPrincipalName';
+     // name: a human-readable displayname for this user
+     $conf['simplesamlphp_attr_name'] = 'urn:mace:dir:attribute-def:cn';
+     // mail: optional, but necessary when enabling page change notifications
+     $conf['simplesamlphp_attr_mail']     = 'urn:mace:dir:attribute-def:mail';
+     // groups: optional, can be used in ACL's to authorize certain parts to certai user groups
+     $conf['simplesamlphp_attr_grps']     = 'groups';
+
+   Other settings that may be of interest:
+     // Do not let users register themselves in DokuWiki directly
+     $conf['openregister'] = 0;
+     // Determine who can access what through access control lists:
+     $conf['useacl'] = 1;
+     // Present a login screen before users can even view DokuWiki:
+     $conf['requirelogin'] = 'false';
+
+3. Ensure that DokuWiki and simpleSAMLphp can share a cookie. You can do this
+   by changing DokuWiki itself, but probably easiest is to change
+   simpleSAMLphp's config/config.php cookiename setting:
+
+     'session.phpsession.cookiename'  => 'DokuWiki'
+
+
+Note on ACL's: if your user attribute contains 'special' characters, you need
+to urlencode these before you put them in your acl.auth.php. The exact
+encoding is in inc/auth.php:auth_nameencode(), which boils down to urlencoding
+each ASCII character not in [A-Za-z0-9]. For example: 'username@example.org'
+needs to be put into the acl as: 'username%40example%2eorg'.
+
+
+Support questions are probably best asked at the simpleSAMLphp group:
+http://groups.google.com/group/simplesamlphp
+
+Bugs and suggestions can be filed on the project's Google Code website:
+http://code.google.com/p/simplesamldokuwiki/
 
