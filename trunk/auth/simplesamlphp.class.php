@@ -73,9 +73,10 @@ class auth_simplesamlphp extends auth_basic {
     $USERINFO['name'] = $attributes[$attr_name][0];
     
     if (!array_key_exists($attr_mail, $attributes)) {
-      die("no attribute \"" . $attr_mail . "\" provided by IDP");
+      $USERINFO['mail'] = "";
+    } else {
+      $USERINFO['mail'] = $attributes[$attr_mail][0];
     }
-    $USERINFO['mail'] = $attributes[$attr_mail][0];
     
     if (!array_key_exists($attr_grps, $attributes)) {
       $USERINFO['grps'] = array($conf['defaultgroup']);
@@ -96,4 +97,3 @@ class auth_simplesamlphp extends auth_basic {
     $this->as->logout();
   }
 }
-?>
