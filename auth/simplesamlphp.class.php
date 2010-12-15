@@ -2,9 +2,14 @@
 /**
  * simpleSAMLphp authentication plugin
  *
+ * Copyright 2009-2010 by the authors:
  * @author     Andreas Aakre Solberg, UNINETT, http://www.uninett.no
  * @author     François Kooman
  * @author     Thijs Kinkhorst, Universiteit van Tilburg
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation: http://www.gnu.org/licenses/lgpl.html
  */
 
 class auth_simplesamlphp extends auth_basic {
