@@ -1,4 +1,4 @@
-With this component you can integrate simpleSAMLphp with DokuWiki?, enabling
+With this component you can integrate simpleSAMLphp with DokuWiki, enabling
 federated login with an SAML 2.0 or Shibboleth 1.3 IdP. It's a authentication
 plugin for DokuWiki which uses a simpleSAMLphp installation on the same host.
 
@@ -63,3 +63,6 @@ http://groups.google.com/group/simplesamlphp
 Bugs and suggestions can be filed on the project's Google Code website:
 http://code.google.com/p/simplesamldokuwiki/
 
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation: http://www.gnu.org/licenses/lgpl.html
