@@ -1,0 +1,1 @@
+With this component you can integrate simpleSAMLphp with DokuWiki, enabling federated login with an SAML 2.0 or Shibboleth 1.3 IdP.
